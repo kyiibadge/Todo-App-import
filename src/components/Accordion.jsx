@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-function Accordion({ question, answer }) {
-  const [open, setOpen] = useState(false);
-  const accordionHandler = () => {
-    setOpen(!open);
-  };
+function Accordion({ id, openAccordion, question, answer, isOpen }) {
+  // const [open, setOpen] = useState(false);
+  // const accordionHandler = () => {
+  //   setOpen(!open);
+  // };
 
   return (
     <div className="border border-gray-400">
       <div
+        onClick={() => openAccordion(id)}
         className=" bg-gray-400 p-3 select-none cursor-pointer flex justify-between"
-        onClick={accordionHandler}
       >
         <h4>{question}</h4>
         <svg
@@ -19,7 +19,7 @@ function Accordion({ question, answer }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`duration-300 w-6 h-6 ${!open && "rotate-180"}`}
+          className={`duration-300 w-6 h-6 ${!isOpen && "rotate-180"}`}
         >
           <path
             strokeLinecap="round"
@@ -28,7 +28,7 @@ function Accordion({ question, answer }) {
           />
         </svg>
       </div>
-      {open && (
+      {isOpen && (
         <div className={`p-3`}>
           <p className={`p-4 animate__animated animate__fadeIn`}>{answer}</p>
         </div>
