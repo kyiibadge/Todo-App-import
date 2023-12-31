@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import EditInput from "./EditInput";
 
 function List({ id, job, isDone, deleteTask, doneTask, updateJobTask }) {
   const [edit, setEdit] = useState(false);
@@ -30,15 +31,11 @@ function List({ id, job, isDone, deleteTask, doneTask, updateJobTask }) {
       <div className="list">
         <div className="group animate__animated animate__fadeInLeft border mb-3 overflow-hidden border-neutral-700 p-5 flex justify-between items-center">
           {edit ? (
-            <div className="">
-              <input
-                value={updateInput}
-                type="text"
-                className={`border border-gray-400 text-sm w-[280px] py-1 px-2`}
-                onChange={handleUpdateInputText}
-                onBlur={handleUpdateInputBlur}
-              />
-            </div>
+            <EditInput
+              updateInput={updateInput}
+              handleUpdateInputText={handleUpdateInputText}
+              handleUpdateInputBlur={handleUpdateInputBlur}
+            />
           ) : (
             <div className="content flex items-center gap-3">
               <input
